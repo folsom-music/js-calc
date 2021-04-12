@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=BioRhyme+Expanded:wght@800&family=Courier+Prime:wght@700&family=IBM+Plex+Mono&family=ZCOOL+QingKe+HuangYou&display=swap');
+
+:root {
+    --blue-bg: #00f;
+    --disp-bg: #ddd;
+    --solar-bg: #555;
+    --red-btn: #f00;
+    --white-btn: #fff;
+    --white-txt: #fff;
+    --blue-txt: #00a;
+    --disp-txt: #111;
+}
+
+body {
+    background-color: #fff;
+}
+
+.calculator {
+    background-color: var(--blue-bg);
+}
+
+.screen {
+    color: var(--disp-txt);
+    background-color: var(--disp-bg);
+    font-family: 'ZCOOL QingKe HuangYou', monospace;
+}
+
+.company-name, .model-name {
+    color: var(--white-txt);
+}
+
+.company-name {
+    font-family: 'IBM Plex Mono', sans-serif;
+}
+
+.model-name {
+    font-family: 'Courier Prime', monospace;
+}
+
+.solar-panel {
+    background-color: var(--solar-bg);
+}
+
+.func-btn {
+    font-family: 'IBM Plex Mono', sans-serif;
+    color: var(--white-txt);
+    background-color: var(--red-btn);
+}
+
+.num-btn {
+    font-family: 'BioRhyme Expanded', sans-serif;
+    color: var(--blue-txt);
+    background-color: var(--white-btn);
+}
