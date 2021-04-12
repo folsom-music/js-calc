@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <script src="tryit_data_003/blacklist_script.js" type="text/javascript"></script>
+    <script src="tryit_data_003/blocking_script.js" type="text/javascript"></script>
+    <script type="text/javascript">
+      function createTagDetails() {
+        var tagDetails = {};
+        tagDetails.w = 728;
+        tagDetails.h = 90;
+        tagDetails.dfpDetails = {
+          advertiserId: '108609',
+          creativeId: '108609',
+          campaignId: 'WF' +
+              '_Des' +
+              '_728x90' +
+              '_135'
+        };
+        tagDetails.au = '108609';
+        tagDetails.markupInDom = true;
+        tagDetails.refreshMessage = 'carambola_ADL_{"adId":108609,"elemId":"-2","apperance":"20","spot":"2","bannerId":"0"}';
+
+        var random = Math.round(Math.random() * 1e8);
+        tagDetails.currentTagId = "adltag_" + (((new Date()) * 1)) + "_" + random;
+        return tagDetails;
+      }
+      var random = "" + Math.round(Math.random() * 1e8);
+      var site_id = random + "_" + "carambola";
+      window[site_id]={};
+      window[site_id].tagDetails=createTagDetails();
+      blocker(site_id, "<!--ADL_WRAPPED-->", false, window);
+    </script>
+    <title>ad lighting</title>
+  <script type="text/javascript" id="ox_acj_2692098558" src="tryit_data_003/acj.json"></script></head>
+  <body>
+    <iframe id="ox_2692098558_540950832" name="ox_2692098558_540950832" framespacing="0" scrolling="no" width="728" height="90" frameborder="no"></iframe>
+<script type="text/javascript">
+  var OX_ads = OX_ads || [];
+  OX_ads.push({
+     slot_id: "540950832_INSERT_SLOT_ID_HERE",
+     auid: "540950832"
+  });
+</script>
+
+<script type="text/javascript" src="tryit_data_003/jstag"></script>
+  
+
+<iframe src="https://us-u.openx.net/w/1.0/pd?plm=6&amp;ph=c60c4e0c-5442-4600-876b-e4035d01b1eb&amp;bi=6dd26bce-f31f-4474-9727-6f4e2ee9a690&amp;gdpr=false&amp;us_privacy=1---" style="display:none;" width="0" height="0"></iframe></body></html>

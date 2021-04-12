@@ -7,37 +7,45 @@
     <script src="script.js" defer></script>
 </head>
 <body>
-    <div class="calculator">
-        <div class="screen">01234567</div>
-        <div class="text-solar">
-            <h2 class="company-name">FOLSOM INSTRUMENTS</h2>
-            <h1 class="model-name">PF-108</h1>
-            <div class="solar-panel"></div>
-        </div>
-        <div class="buttons-grid">
-            <button type="button" class="func-btn" id="invert">&#43;&#47;&#45;</button>
-            <button type="button" class="func-btn" id="sq-rt">&#8730;</button>
-            <button type="button" class="func-btn" id="percent">&#37;</button>
-            <button type="button" class="func-btn" id="divide">&#247;</button>
-            <button type="button" class="func-btn" id="mem-rc">MRC</button>
-            <button type="button" class="func-btn" id="mem-plus">M&#43;</button>
-            <button type="button" class="func-btn" id="mem-minus">M&#45;</button>
-            <button type="button" class="func-btn" id="multiply">&#215;</button>
-            <button type="button" class="num-btn" id="7">7</button>
-            <button type="button" class="num-btn" id="8">8</button>
-            <button type="button" class="num-btn" id="9">9</button>
-            <button type="button" class="func-btn" id="minus">&#45;</button>
-            <button type="button" class="num-btn" id="4">4</button>
-            <button type="button" class="num-btn" id="5">5</button>
-            <button type="button" class="num-btn" id="6">6</button>
-            <button type="button" class="func-btn" id="plus">&#43;</button>
-            <button type="button" class="num-btn" id="1">1</button>
-            <button type="button" class="num-btn" id="2">2</button>
-            <button type="button" class="num-btn" id="3">3</button>
-            <button type="button" class="func-btn" id="equals">&#61;</button>
-            <button type="button" class="func-btn" id="clear">ON&#47;C</button>
-            <button type="button" class="num-btn" id="0">0</button>
-            <button type="button" class="num-btn" id="decimal">.</button>
+    <div class="container">
+        <div class="calculator">
+            <div class="screen">01234567</div>
+            <div class="text-solar-container">
+                <h1 class="model-name">PF-108</h1>
+                <div class="company-solar">
+                    <h2 class="company-name">FOLSOM INSTRUMENTS</h2>
+                    <div class="solar-panel"></div>
+                </div>
+            </div>
+            <div class="buttons-container">
+                <div class="buttons-grid">
+                    <button type="button" class="func-btn" id="invert">&#43;&#47;&#45;</button>
+                    <button type="button" class="func-btn" id="sq-rt">&#8730;</button>
+                    <button type="button" class="func-btn" id="percent">&#37;</button>
+                    <button type="button" class="func-btn" id="mem-rc">MRC</button>
+                    <button type="button" class="func-btn" id="mem-plus">M&#43;</button>
+                    <button type="button" class="func-btn" id="mem-minus">M&#45;</button>
+                    <button type="button" class="num-btn" id="7">7</button>
+                    <button type="button" class="num-btn" id="8">8</button>
+                    <button type="button" class="num-btn" id="9">9</button>
+                    <button type="button" class="num-btn" id="4">4</button>
+                    <button type="button" class="num-btn" id="5">5</button>
+                    <button type="button" class="num-btn" id="6">6</button>
+                    <button type="button" class="num-btn" id="1">1</button>
+                    <button type="button" class="num-btn" id="2">2</button>
+                    <button type="button" class="num-btn" id="3">3</button>
+                    <button type="button" class="func-btn" id="clear">ON&#47;C</button>
+                    <button type="button" class="num-btn" id="0">0</button>
+                    <button type="button" class="num-btn" id="decimal">.</button>
+                </div>
+                <div class="operands">
+                    <button type="button" class="func-btn" id="divide">&#247;</button>
+                    <button type="button" class="func-btn" id="multiply">&#215;</button>
+                    <button type="button" class="func-btn" id="minus">&#45;</button>
+                    <button type="button" class="func-btn" id="plus">&#43;</button>
+                    <button type="button" class="func-btn" id="equals">&#61;</button>
+                </div>
+            </div>
         </div>
     </div>
 </body>

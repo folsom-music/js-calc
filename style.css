@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=BioRhyme+Expanded:wght@800&family=Courier+Prime:wght@700&family=IBM+Plex+Mono&family=ZCOOL+QingKe+HuangYou&display=swap');
 
 :root {
-    --blue-bg: #00f;
+    --blue-bg: #00C;
     --disp-bg: #ddd;
     --solar-bg: #555;
     --red-btn: #f00;
@@ -15,14 +15,46 @@ body {
     background-color: #fff;
 }
 
+.container {
+    padding: 10px;
+    margin: auto;
+    position: relative;
+    width: 100%;
+}
+
 .calculator {
+    margin: auto;
+    padding: 15px;
+    border-radius: 20px;
+    width: 250px;
+    height: 444px;
+    display: flex;
+    flex-direction: column;
     background-color: var(--blue-bg);
+    box-shadow: 5px 7px 10px, -3px -2px;
 }
 
 .screen {
     color: var(--disp-txt);
     background-color: var(--disp-bg);
+    box-shadow: 2px 5px 2px inset, -1px -1px inset;
+    border-radius: 3px;
     font-family: 'ZCOOL QingKe HuangYou', monospace;
+    font-size: 50px;
+    text-align: right;
+    margin: 10px 10px 0 10px;
+    padding: 0 5px;
+}
+
+.text-solar-container {
+    display: flex;
+    flex-direction: row-reverse;
+    align-self: flex-start;
+}
+
+.company-solar {
+    display: flex;
+    flex-direction: column;
 }
 
 .company-name, .model-name {
@@ -31,14 +63,57 @@ body {
 
 .company-name {
     font-family: 'IBM Plex Mono', sans-serif;
+    font-size: 12px;
+    white-space: nowrap;
 }
 
 .model-name {
     font-family: 'Courier Prime', monospace;
+    font-size: 30px;
 }
 
 .solar-panel {
     background-color: var(--solar-bg);
+    height: 30px;
+    width: 120px;
+    box-shadow: 5px 5px 3px inset, 1px 1px 1px inset;
+}
+
+.buttons-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.buttons-grid {
+    display: grid;
+    grid-template-rows: repeat(6, 1fr);
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 10px 7px;
+}
+
+.operands {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+button {
+    width: 55px;
+    text-align: left;
+    padding: 3px 0px 15px 5px;
+    border: none;
+    box-shadow: 1.5px 1px 2px #000, -1px -1px 1px #aaa;
+    border-radius: 5px;
+}
+
+button:active {
+    box-shadow: -1.5px -1px 2px #aaa inset, 2px 2px 2px #000 inset;
+}
+
+button#equals {
+    padding-bottom: 65px;
 }
 
 .func-btn {
