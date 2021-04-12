@@ -42,6 +42,7 @@ body {
     font-family: 'ZCOOL QingKe HuangYou', monospace;
     font-size: 50px;
     text-align: right;
+    letter-spacing: 1px;
     margin: 10px 10px 0 10px;
     padding: 0 5px;
 }
@@ -62,12 +63,15 @@ body {
 }
 
 .company-name {
+    padding-left: 5px;
     font-family: 'IBM Plex Mono', sans-serif;
     font-size: 12px;
+    letter-spacing: -0.5px;
     white-space: nowrap;
 }
 
 .model-name {
+    margin: 6px 0 0 10px;
     font-family: 'Courier Prime', monospace;
     font-size: 30px;
 }
