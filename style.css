@@ -35,6 +35,8 @@ body {
 }
 
 .screen {
+    width: 220px;
+    height: 60px;
     color: var(--disp-txt);
     background-color: var(--disp-bg);
     box-shadow: 2px 5px 2px inset, -1px -1px inset;
@@ -115,7 +117,7 @@ button {
     border-radius: 5px;
 }
 
-button:active {
+.btn-active {
     box-shadow: -1.5px -1px 2px #aaa inset, 2px 2px 2px #000 inset;
 }
 
