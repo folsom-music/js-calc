@@ -12,7 +12,9 @@ funcButtons.forEach(button =>
 );
 
 function pressKey(key) {
-    if (display.textContent.length > 7) {
+    if (key === "Backspace") {
+        inputKey(key);
+    } else if (display.textContent.length > 7) {
         return;
     } else {
         inputKey(key);
@@ -22,6 +24,28 @@ function pressKey(key) {
 function inputKey(char) {
     switch (char) {
         default:
+            break;
+        case '.':
+            inputKey('decimal');
+            break;
+        case '=':
+        case 'Enter':
+            inputKey('equals');
+            break;
+        case 'Escape':
+        case 'c':
+            inputKey('clear');
+            break;
+        case '+':
+            inputKey('plus');
+            break;
+        case '*':
+        case 'X':
+        case 'x':
+            inputKey('multiply');
+            break;
+        case '/':
+            inputKey('divide');
             break;
         case '0':
             preventLeadingZeros();
@@ -39,34 +63,24 @@ function inputKey(char) {
             display.textContent += char;
             break;
         case 'decimal':
-        case '.':
-            convertDisplayToFloat();
+            displayFloat();
             break;
         case 'equals':
-        case 'Enter':
-        case '=':
             operate(operator, firstNum, lastNum);
             break;
         case 'Backspace':
-            removeLastDigit();
+            removeLastChar();
             break;
         case 'clear':
-        case 'Escape':
-        case 'c':
             clearCalc();
             break;
         case '-':
             assignHyphen();
             break;
         case 'plus':
-        case '+':
         case 'minus':
         case 'multiply':
-        case '*':
-        case 'x':
-        case 'X':
         case 'divide':
-        case '/':
             assignOperator(char);
             break;
         case 'mem-rc':
@@ -78,7 +92,7 @@ function inputKey(char) {
         case 'percent':
             instantFunc(char);
             break;
-    }
+    };
 }
 
 function preventLeadingZeros(){
@@ -88,28 +102,41 @@ function preventLeadingZeros(){
         display.textContent = "0";
     } else {
         display.textContent += "0";
-    }
+    };
 }
 
 function removeLeadingZeros() {
     if (display.textContent[0] === "0" && display.textContent.length > 0 && !display.textContent.includes(".")) {
         display.textContent = display.textContent.substring(1);
-    }
+    };
 }
 
-function convertDisplayToFloat() {
+function displayFloat() {
     if (display.textContent.includes(".")) {
         return;
     } else if (display.textContent === "") {
         display.textContent += "0.";
     } else {
         display.textContent += ".";
-    }
+    };
 }
 function operate() {}
-function removeLastDigit() {}
+function removeLastChar() {
+    display.textContent = display.textContent.slice(0, -1);
+    if (display.textContent.length < 1) {
+        display.textContent = "0";
+    };
+}
 function clearCalc() {}
-function assignHyphen() {}
+
+function assignHyphen() {
+    if (display.textContent.length === 0) {
+        display.textContent += "-";
+    } else {
+        inputKey("minus");
+    }
+}
+
 function assignOperator() {}
 function memoryRecall() {}
 function instantFunc() {}
