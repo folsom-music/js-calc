@@ -12,7 +12,7 @@ funcButtons.forEach(button =>
 );
 
 function pressKey(key) {
-    if (display.textContent.length > 8) {
+    if (display.textContent.length > 7) {
         return;
     } else {
         inputKey(key);
@@ -24,6 +24,8 @@ function inputKey(char) {
         default:
             break;
         case '0':
+            preventLeadingZeros();
+            break;
         case '1':
         case '2':
         case '3':
@@ -33,6 +35,7 @@ function inputKey(char) {
         case '7':
         case '8':
         case '9':
+            removeLeadingZeros();
             display.textContent += char;
             break;
         case 'decimal':
@@ -42,7 +45,7 @@ function inputKey(char) {
         case 'equals':
         case 'Enter':
         case '=':
-            operate (operator, firstNum, lastNum);
+            operate(operator, firstNum, lastNum);
             break;
         case 'Backspace':
             removeLastDigit();
@@ -67,12 +70,46 @@ function inputKey(char) {
             assignOperator(char);
             break;
         case 'mem-rc':
+            memoryRecall();
         case 'mem-plus':
         case 'mem-minus':
         case 'invert':
         case 'sq-rt':
         case 'percent':
-            instantFunction(char);
+            instantFunc(char);
             break;
     }
 }
+
+function preventLeadingZeros(){
+    if (display.textContent === "0") {
+        return;
+    } else if (display.textContent === "") {
+        display.textContent = "0";
+    } else {
+        display.textContent += "0";
+    }
+}
+
+function removeLeadingZeros() {
+    if (display.textContent[0] === "0" && display.textContent.length > 0 && !display.textContent.includes(".")) {
+        display.textContent = display.textContent.substring(1);
+    }
+}
+
+function convertDisplayToFloat() {
+    if (display.textContent.includes(".")) {
+        return;
+    } else if (display.textContent === "") {
+        display.textContent += "0.";
+    } else {
+        display.textContent += ".";
+    }
+}
+function operate() {}
+function removeLastDigit() {}
+function clearCalc() {}
+function assignHyphen() {}
+function assignOperator() {}
+function memoryRecall() {}
+function instantFunc() {}
