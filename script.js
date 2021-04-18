@@ -64,11 +64,36 @@ function pressDecimal() {
 }
 
 function inputFilter(input) {
-    if (inputMap.hasOwnProperty(input)) {
-        inputFilter(inputMap[input]);
-    } else if (input >= 0  && input <=9) {
-        pressNum(input);
-    } else if (input === "decimal") {
-        pressDecimal();
+    if (inputMap.hasOwnProperty(input)) { inputFilter(inputMap[input]); }
+    if (input >= 0  && input <=9) { pressNum(input); }
+    switch (input) {
+        case "-":
+            assignHyphen();
+            break;
+        case "Backspace":
+            removeLastChar();
+            break;
+        case "clear":
+            pressClear();
+            break;
+        case "decimal":
+            pressDecimal();
+            break;
+        case "equals":
+            pressEquals();
+            break;
+        case "plus":
+        case "minus":
+        case "multiply":
+        case "divide":
+            assignOperator(input);
+            break;
+        case "invert":
+        case "sq-rt":
+        case "percent":
+        case "mem-rc":
+        case "mem-plus":
+        case "mem-minus":
+            break;
     }
 }
