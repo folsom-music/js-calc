@@ -12,7 +12,10 @@ function updateDisplay() {
     display.textContent = calculator.displayStr;
 }
 
-window.addEventListener('keydown', (e) => { inputFilter(e.key) });
+window.addEventListener('keydown', (e) => {
+    inputFilter(e.key);
+    e.preventDefault();
+});
 
 calcButtons.forEach(button =>
         button.addEventListener('click', (e) => { inputFilter(button.id)})
@@ -40,19 +43,17 @@ function pressNum(str) {
     } else {
         calculator.displayStr = displayStr === "0" ? str : displayStr + str;
     }
-    updateDisplay();
 }
 
 function pressDecimal() {
     if (calculator.hasInputs === true) {
         calculator.displayStr = "0.";
         calculator.hasInputs = false;
-        updateDisplay();
+        return;
     }
     if (!calculator.displayStr.includes(".")) {
         calculator.displayStr += ".";
     };
-    updateDisplay();
 }
 
 function assignOperator(nextOp) {
@@ -70,12 +71,11 @@ function assignOperator(nextOp) {
     } else if (operator) {
         const result = operate(operator, firstVal, displayFloat);
 
-        calculator.displayStr = String(result);
+        calculator.displayStr = `${parseFloat(result.toFixed(2))}`;
         calculator.firstVal = result;
     }
     calculator.hasInputs = true;
     calculator.operator = nextOp;
-    updateDisplay();
 }
 
 function add(a, b) { return a + b; }
@@ -109,7 +109,6 @@ function pressClear () {
     calculator.firstVal = null;
     calculator.hasInputs = false;
     calculator.operator = null;
-    updateDisplay();
 }
 
 function inputFilter(input) {
@@ -143,4 +142,5 @@ function inputFilter(input) {
         case "mem-minus":
             break;
     }
+    updateDisplay();
 }
