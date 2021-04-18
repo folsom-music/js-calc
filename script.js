@@ -104,11 +104,24 @@ function assignHyphen() {
 }
 
 function pressClear () {
-    // this cna be refactored to include mem functions
+    // this can be refactored to include mem functions
     calculator.displayStr = "0"
     calculator.firstVal = null;
     calculator.hasInputs = false;
     calculator.operator = null;
+}
+
+function removeLastChar() {
+    const { displayStr } = calculator;
+    
+    calculator.displayStr = displayStr.slice(0, -1);
+    if (calculator.displayStr < 1) {
+        calculator.displayStr = "0";
+    }
+}
+
+function invertDisplay() {
+    if (calculator.hasInputs === false) { calculator.displayStr *= -1; }
 }
 
 function inputFilter(input) {
@@ -135,6 +148,7 @@ function inputFilter(input) {
             assignOperator(input);
             break;
         case "invert":
+            invertDisplay();
         case "sq-rt":
         case "percent":
         case "mem-rc":
