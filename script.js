@@ -18,24 +18,6 @@ calcButtons.forEach(button =>
         button.addEventListener('click', (e) => { inputFilter(button.id)})
 );
 
-function add(a, b) { return a + b; }
-function subtract(a, b) { return a - b; }
-function multiply(a, b) { return a * b; }
-function divide(a, b) { return a / b; }
-
-function operate(op, a, b) {
-    switch (op) {
-        case 'plus':
-            return add(a, b);
-        case 'minus':
-            return subtract(a, b);
-        case 'multiply':
-            return multiply(a, b);
-        case 'divide':
-            return divide(a, b);
-    }
-}
-
 //make an object/array of all avaialble function strings, including the html buttons
 const inputMap = {
     "=": "equals",
@@ -51,15 +33,82 @@ const inputMap = {
 };
 
 function pressNum(str) {
-    const { displayStr } = calculator;
-    calculator.displayStr = displayStr === '0' ? str : displayStr + str;
+    const { displayStr, hasInputs } = calculator;
+    if (hasInputs === true) {
+        calculator.displayStr = str;
+        calculator.hasInputs = false;
+    } else {
+        calculator.displayStr = displayStr === "0" ? str : displayStr + str;
+    }
     updateDisplay();
 }
 
 function pressDecimal() {
+    if (calculator.hasInputs === true) {
+        calculator.displayStr = "0.";
+        calculator.hasInputs = false;
+        updateDisplay();
+    }
     if (!calculator.displayStr.includes(".")) {
         calculator.displayStr += ".";
     };
+    updateDisplay();
+}
+
+function assignOperator(nextOp) {
+    const { firstVal, displayStr, operator } = calculator;
+    const displayFloat = parseFloat(displayStr);
+
+    if (operator && calculator.hasInputs) {
+        calculator.operator = nextOp;
+        console.table(calculator);
+        return;
+    }
+
+    if (firstVal === null && !isNaN(displayFloat)) {
+        calculator.firstVal = displayFloat;
+    } else if (operator) {
+        const result = operate(operator, firstVal, displayFloat);
+
+        calculator.displayStr = String(result);
+        calculator.firstVal = result;
+    }
+    calculator.hasInputs = true;
+    calculator.operator = nextOp;
+    updateDisplay();
+}
+
+function add(a, b) { return a + b; }
+function subtract(a, b) { return a - b; }
+function multiply(a, b) { return a * b; }
+function divide(a, b) { return a / b; }
+
+function operate(op, a, b) {
+    switch (op) {
+        case 'plus':
+            return add(a, b);
+        case 'minus':
+            return subtract(a, b);
+        case 'multiply':
+            return multiply(a, b);
+        case 'divide':
+            return divide(a, b);
+        default:
+            return b;
+    }
+}
+
+function assignHyphen() {
+    // this can be refactored to enter negative numbers
+        inputFilter("minus");
+}
+
+function pressClear () {
+    // this cna be refactored to include mem functions
+    calculator.displayStr = "0"
+    calculator.firstVal = null;
+    calculator.hasInputs = false;
+    calculator.operator = null;
     updateDisplay();
 }
 
@@ -79,13 +128,11 @@ function inputFilter(input) {
         case "decimal":
             pressDecimal();
             break;
-        case "equals":
-            pressEquals();
-            break;
         case "plus":
         case "minus":
         case "multiply":
         case "divide":
+        case "equals":
             assignOperator(input);
             break;
         case "invert":
