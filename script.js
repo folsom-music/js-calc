@@ -3,6 +3,7 @@ const calcButtons = document.querySelectorAll('.func-btn, .num-btn');
 let calculator = {
     displayStr: '0',
     firstVal: null,
+    memVal: 0,
     operator: null,
     hasInputs: false
 };
@@ -37,6 +38,7 @@ const inputMap = {
 
 function pressNum(str) {
     const { displayStr, hasInputs } = calculator;
+    if (displayStr.length > 7 && hasInputs === false) { return; }
     if (hasInputs === true) {
         calculator.displayStr = str;
         calculator.hasInputs = false;
@@ -68,9 +70,18 @@ function assignOperator(nextOp) {
 
     if (firstVal === null && !isNaN(displayFloat)) {
         calculator.firstVal = displayFloat;
+    } else if (operator === "divide" && displayFloat == 0) {
+        alert("Didn't you pay attention in school?");
+        pressClear();
+        return;
     } else if (operator) {
         const result = operate(operator, firstVal, displayFloat);
 
+        if (String(result).length > 7) {
+            alert("Result is too big");
+            pressClear();
+            return;
+    }
         calculator.displayStr = `${parseFloat(result.toFixed(2))}`;
         calculator.firstVal = result;
     }
@@ -109,6 +120,7 @@ function pressClear () {
     calculator.firstVal = null;
     calculator.hasInputs = false;
     calculator.operator = null;
+    calculator.memVal = 0;
 }
 
 function removeLastChar() {
@@ -122,6 +134,36 @@ function removeLastChar() {
 
 function invertDisplay() {
     if (calculator.hasInputs === false) { calculator.displayStr *= -1; }
+}
+
+function squareRoot() {
+    const root = calculator.displayStr ** 0.5;
+    calculator.displayStr = parseFloat(root.toFixed(2));
+}
+
+function memRecall() {
+    const { memVal } = calculator;
+    if (memVal === null) {
+        return;
+    } else {
+        calculator.displayStr = memVal;
+    }
+}
+
+function memPlus() {
+    const { displayStr } = calculator;
+
+    calculator.memVal += parseFloat(displayStr);
+    calculator.displayStr = "0";
+    calculator.hasInputs = true;
+}
+
+function memSubtr() {
+    const { displayStr } = calculator;
+
+    calculator.memVal -= parseFloat(displayStr);
+    calculator.displayStr = "0";
+    calculator.hasInputs = true;
 }
 
 function inputFilter(input) {
@@ -149,11 +191,19 @@ function inputFilter(input) {
             break;
         case "invert":
             invertDisplay();
+            break;
         case "sq-rt":
+            squareRoot();
+            break;
         case "percent":
         case "mem-rc":
+            memRecall();
+            break;
         case "mem-plus":
+            memPlus();
+            break;
         case "mem-minus":
+            memSubtr();
             break;
     }
     updateDisplay();
